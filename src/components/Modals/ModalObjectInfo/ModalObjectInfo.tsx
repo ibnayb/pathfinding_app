@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import classnames from "classnames";
-import Loader from "react-loader-spinner";
+import { TailSpin } from "react-loader-spinner";
 
 import { apiArrayToObject, capitalize } from "utils/helpers";
 import { MODAL_OBJECT_INFO } from "components/Modals/modalTypes";
@@ -78,7 +78,7 @@ function ModalObjectInfo(props: AppProps) {
     >
       {isFetching ? (
         <div className={styles["ModalLoader"]}>
-          <Loader type="TailSpin" color="#1b78d0" height={50} width={50} />
+          <TailSpin color="#1b78d0" height={50} width={50} />
         </div>
       ) : category && products ? (
         <>

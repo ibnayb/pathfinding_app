@@ -1,20 +1,18 @@
-import { createStore, applyMiddleware } from "redux";
+import { legacy_createStore as createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
-import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
+import { composeWithDevTools } from "@redux-devtools/extension";
 import { createBrowserHistory } from "history";
-import rootReducer from "./rootReducer";
+import rootReducer, { RootState } from "./rootReducer";
 import rootSaga from "./rootSaga";
 
 export const history = createBrowserHistory();
 
 const configureStore = () => {
-  const initialState = {};
   const sagaMiddleware = createSagaMiddleware();
   const middleware = [sagaMiddleware];
 
   const store = createStore(
     rootReducer(history),
-    initialState,
     composeWithDevTools(applyMiddleware(...middleware))
   );
 
@@ -26,10 +24,10 @@ const store = configureStore();
 
 // Auto-update values after state changes to persist them
 store.subscribe(() => {
-  const { settings } = store.getState();
+  const state = store.getState() as RootState;
 
-  localStorage.setItem("lang", settings.lang);
-  localStorage.setItem("theme", settings.theme);
+  localStorage.setItem("lang", state.settings.lang);
+  localStorage.setItem("theme", state.settings.theme);
 });
 
 export default store;

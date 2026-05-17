@@ -19,7 +19,7 @@ export interface AppState {
   api: ApiState;
 }
 
-const rootReducer = combineReducers<AppState>({
+const rootReducer = combineReducers({
   settings,
   sidebar,
   modals,
@@ -31,4 +31,6 @@ const rootReducer = combineReducers<AppState>({
 
 export type RootState = ReturnType<typeof rootReducer>;
 
-export default (history: History) => rootReducer;
+const createRootReducer = (_history: History) => rootReducer;
+
+export default createRootReducer;

@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import * as serviceWorker from "utils/serviceWorker";
 import Modal from "react-modal";
 
@@ -21,13 +21,14 @@ WebFont.load({
 
 Modal.setAppElement("#root");
 
-ReactDOM.render(
+const container = document.getElementById("root");
+const root = createRoot(container!);
+root.render(
   <React.StrictMode>
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>
 );
 
 serviceWorker.unregister();

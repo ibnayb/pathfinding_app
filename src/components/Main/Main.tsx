@@ -8,7 +8,7 @@ import {
   FiX,
 } from "react-icons/fi";
 import classnames from "classnames";
-import Loader from "react-loader-spinner";
+import { TailSpin } from "react-loader-spinner";
 
 import { capitalize } from "utils/helpers";
 
@@ -198,8 +198,7 @@ function Main(props: AppProps) {
                   <div className={styles["Autocomplete"]}>
                     {isAutocompleteFetching ? (
                       <div className={styles["Autocomplete-loader"]}>
-                        <Loader
-                          type="TailSpin"
+                        <TailSpin
                           color="#1b78d0"
                           height={20}
                           width={20}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FiChevronRight } from "react-icons/fi";
 import { DiReact } from "react-icons/di";
 import classnames from "classnames";
-import Loader from "react-loader-spinner";
+import { TailSpin } from "react-loader-spinner";
 
 import { IState as SidebarState } from "store/sidebar/reducer";
 import { IState as ApiState } from "store/api/reducer";
@@ -119,7 +119,7 @@ function Sidebar(props: AppProps) {
       >
         {isFetching ? (
           <div className={styles["Categories-loader"]}>
-            <Loader type="TailSpin" color="#1b78d0" height={50} width={50} />
+            <TailSpin color="#1b78d0" height={50} width={50} />
           </div>
         ) : (
           <>

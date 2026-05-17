@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { gsap } from "gsap";
-import Loader from "react-loader-spinner";
+import { TailSpin } from "react-loader-spinner";
 
 import FloorMapSvg from "components/FloorMapSvg";
 import { IState as GraphState } from "store/graph/reducer";
@@ -107,7 +107,7 @@ function Map(props: AppProps) {
 
   return isGraphGenerating || isPathGenerating ? (
     <div className={styles["LoadingScreen"]}>
-      <Loader type="TailSpin" color="#1b78d0" height={50} width={50} />
+      <TailSpin color="#1b78d0" height={50} width={50} />
     </div>
   ) : (
     <div className={styles["Map"]}>
